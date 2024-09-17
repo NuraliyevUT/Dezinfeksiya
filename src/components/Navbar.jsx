@@ -3,21 +3,19 @@ import { Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import logo from "../assets/profile-pictures/logo.png";
 
 export const Navbar = () => {
-  
-  
   const { t, i18n } = useTranslation();
   const handleChange = (event) => {
     const selectedLanguage = event.target.value;
     i18n.changeLanguage(selectedLanguage);
   };
-  
+
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const toggleNavbar = () => {
     setMobileDrawerOpen(!mobileDrawerOpen);
   };
-
 
   const navItems = [
     { label: t("Основной"), href: "#" },
@@ -26,8 +24,6 @@ export const Navbar = () => {
     { label: t("ФАҚ"), href: "#faq" },
   ];
   const language = localStorage.getItem("i18nextLng");
-
-  
 
   return (
     <nav className="sticky top-0 z-50 py-3 backdrop-blur-lg border-b border-neutral-700/80">
@@ -38,18 +34,14 @@ export const Navbar = () => {
               href="#"
               className="flex items-center w-[140px] h-[60px] justify-center lg:w-[220px] lg:h-[60px]"
             >
-              <img
-                className="h-auto w-auto mr-2"
-                src="https://www.dezinfeksiyatashkent.uz/assets/dez_logo2-5b433e48.png"
-                alt="logo"
-              />
+              <img className="h-auto w-auto mr-2" src={logo} alt="logo" />
             </a>
             <select
               value={language}
               name="Lng"
               id="lng"
               onChange={handleChange}
-              className="border-2 rounded-md p-1 ml-3"
+              className="border-2 border-neutral-400 bg-white rounded-md p-1 md:p-2 ml-3 text-xs md:text-sm text-neutral-700 hover:border-blue-500"
             >
               <option value="ru">Русский</option>
               <option value="uz">Узбек</option>
